@@ -11,11 +11,11 @@ PATH="$PATH:$PWD/phantomjs/bin/"
 sleep 1
 
 java -jar selenium -role node \
-  -nodeConfig nodeConfig.json \
+  -nodeConfig ./libs/selenium/nodeConfig.json \
   -port 5555 &
 
 java -jar selenium -role node \
-  -nodeConfig nodeConfig.json \
+  -nodeConfig ./libs/selenium/nodeConfig.json \
   -port 5554 &
 
 git clone git@github.com:cardforcoin/shale.git

@@ -28,7 +28,7 @@ ln -s ./libs/$SELENIUM_JAR selenium
 
 mkdir -p ./libs/selenium
 SELENIUM_NODE_CONFIG_FILE="./libs/selenium/nodeConfig.json"
-SELENIUM_NODE_CONFIG='{"capabilities":[{"browserName":"phantomjs","maxInstances": 4}]}'
+SELENIUM_NODE_CONFIG='{"capabilities":[{"browserName":"phantomjs","maxInstances": 4}], "configuration": {"register":false}}'
 
 if [[ ! -f $SELENIUM_NODE_CONFIG_FILE ]]; then
     echo  $SELENIUM_NODE_CONFIG > $SELENIUM_NODE_CONFIG_FILE
