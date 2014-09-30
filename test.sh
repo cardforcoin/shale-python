@@ -18,8 +18,8 @@ java -jar selenium -role node \
   -nodeConfig ./libs/selenium/nodeConfig.json \
   -port 5554 &
 
-git clone git@github.com:cardforcoin/shale.git
-cd shale
+git clone git@github.com:cardforcoin/shale.git shale-clojure
+cd shale-clojure
 
 lein uberjar
 JAR_FILE=$(ls target | grep -i shale | grep standalone | head -1)
