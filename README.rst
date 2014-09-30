@@ -3,7 +3,7 @@ shale-python
 
 A Python client for Shale_, the Selenium hub replacement.
 
-.. _Shale https://github.com/cardforcoin/shale
+.. _Shale: https://github.com/cardforcoin/shale
 .. pypi - Everything below this line goes into the description for PyPI.
 
 Examples
