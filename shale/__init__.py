@@ -3,16 +3,16 @@ import requests
 from contextlib import contextmanager
 
 from .webdriver import ResumableRemote
-from .exceptions import ShaleException
 
 __all__ = ['Client', 'default_client', 'reserve_browser', 'release_browser',
            'destroy_browser', 'running_browsers', 'browser_metadata',
            'set_browser_tags', 'refresh_browser', 'browser',
-           'ShaleClientException']
+           'ShaleException']
 
 
-class ShaleClientException(ShaleException):
-    pass
+class ShaleException(Exception):
+    def __init__(self, message):
+        self.message = message
 
 
 class ClientResumableRemote(ResumableRemote):
@@ -166,7 +166,7 @@ class Client(object):
         """
         resp_data = json.loads(resp.content.decode('UTF-8'))
         if 'error' in resp_data:
-            raise ShaleClientException(resp_data['error'])
+            raise ShaleException(resp_data['error'])
         return resp_data
 
 

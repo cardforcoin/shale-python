@@ -95,7 +95,7 @@ def test_multi_node_creation():
     try:
         browser = client.get_or_create_browser(
                 tags=['logged-in'], node='http://unknownhost:5555/wd/hub')
-    except shale.ShaleClientException:
+    except shale.ShaleException:
         pass
     else:
         raise AssertionError('Creating a browser with an unknown node should '
