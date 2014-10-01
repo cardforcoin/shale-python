@@ -69,11 +69,12 @@ class Client(object):
         }
         if node is not None:
             data['node'] = node
-        resp = requests.post('{}/sessions/'.format(self.url_root),
-                             data=json.dumps(data),
-                             params={'force_create':force_create,
-                                     'reserve':reserve},
-                             headers=self.headers)
+        resp = requests.post(
+            '{}/sessions/'.format(self.url_root),
+            data=json.dumps(data),
+            params={'force_create': force_create, 'reserve': reserve},
+            headers=self.headers,
+        )
         resp_data = self._process_json_data(resp)
 
         if reserve:
