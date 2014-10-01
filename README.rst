@@ -3,6 +3,15 @@ shale-python
 
 A Python client for Shale_, the Selenium hub replacement.
 
+Running the tests
+-----------------
+
+..code:: bash
+
+    ./get_selenium.sh
+    pip install tox
+    tox
+
 .. _Shale: https://github.com/cardforcoin/shale
 .. pypi - Everything below this line goes into the description for PyPI.
 
