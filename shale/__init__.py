@@ -11,8 +11,9 @@ __all__ = ['Client', 'default_client', 'reserve_browser', 'release_browser',
 
 
 class ShaleException(Exception):
-    def __init__(self, message):
+    def __init__(self, message, *args):
         self.message = message
+        self.args = tuple([message] + list(args))
 
 
 class ClientResumableRemote(ResumableRemote):
