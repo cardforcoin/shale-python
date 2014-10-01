@@ -70,12 +70,18 @@ class Client(object):
         }
         if node is not None:
             data['node'] = node
-        resp = requests.post(
-            '{}/sessions/'.format(self.url_root),
-            data=json.dumps(data),
-            params={'force_create': force_create, 'reserve': reserve},
-            headers=self.headers,
-        )
+        try:
+            resp = requests.post(
+                '{}/sessions/'.format(self.url_root),
+                data=json.dumps(data),
+                params={'force_create': force_create, 'reserve': reserve},
+                headers=self.headers,
+            )
+        except requests.ConnectionError as e:
+            raise ShaleException(
+                "Couldn't connect to {url}. Is the shale server running? "
+                "Is the url correct?".format(url=self.url_root), e)
+
         resp_data = self._process_json_data(resp)
 
         if reserve:
@@ -165,7 +171,13 @@ class Client(object):
         """
         Process JSON data from a response.
         """
-        resp_data = json.loads(resp.content.decode('UTF-8'))
+
+        try:
+            resp_data = json.loads(resp.content.decode('UTF-8'))
+        except ValueError as e:
+            raise ShaleException(
+                "The shale server did not return JSON.", e, resp.content)
+
         if 'error' in resp_data:
             raise ShaleException(resp_data['error'])
         return resp_data
