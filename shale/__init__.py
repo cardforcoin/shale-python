@@ -85,8 +85,10 @@ class Client(object):
         resp_data = self._process_json_data(resp)
 
         if reserve:
-            return ClientResumableRemote(client=self,
-                    session_id=resp_data['id'], command_executor=resp_data['node'])
+            return ClientResumableRemote(
+                    client=self,
+                    session_id=resp_data['id'],
+                    command_executor=resp_data.get('node', {}).get('url'))
         return resp_data
 
     def create_browser(self, browser_name='phantomjs', tags=None,
