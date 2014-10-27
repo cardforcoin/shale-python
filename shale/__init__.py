@@ -69,7 +69,7 @@ class Client(object):
             'extra_desired_capabilities': extra_desired_capabilities,
         }
         if node is not None:
-            data['node'] = node
+            data['node'] = {'url':node}
         try:
             resp = requests.post(
                 '{}/sessions/'.format(self.url_root),
@@ -103,7 +103,7 @@ class Client(object):
                 data=json.dumps({'reserved': True}), headers=self.headers)
         resp_data = self._process_json_data(resp)
         return ClientResumableRemote(client=self, session_id = resp_data['id'],
-                command_executor=resp_data['node'])
+                command_executor=resp_data.get('node', {}).get('url'))
 
     def release_browser(self, browser):
         requests.put('{}/sessions/{}'.format(self.url_root, browser.session_id),
