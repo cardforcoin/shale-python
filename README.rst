@@ -65,8 +65,5 @@ Running the tests
 
 .. code:: bash
 
-    ./get_selenium.sh
     pip install tox
     tox
-    # OR simply
-    ./test.sh
