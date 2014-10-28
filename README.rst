@@ -3,15 +3,6 @@ shale-python
 
 A Python client for Shale_, the Selenium hub replacement.
 
-Running the tests
------------------
-
-..code:: bash
-
-    ./get_selenium.sh
-    pip install tox
-    tox
-
 .. _Shale: https://github.com/cardforcoin/shale
 .. pypi - Everything below this line goes into the description for PyPI.
 
@@ -68,3 +59,14 @@ You can also force create a new remote webdriver.
 .. code:: python
 
     >>> browser = client.create_browser()
+
+Running the tests
+-----------------
+
+.. code:: bash
+
+    ./get_selenium.sh
+    pip install tox
+    tox
+    # OR simply
+    ./test.sh
