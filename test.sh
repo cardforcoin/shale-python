@@ -12,11 +12,11 @@ sleep 1
 
 java -jar selenium -role node \
   -nodeConfig ./libs/selenium/nodeConfig.json \
-  -port 5555 &
+  -port 4444 &
 
 java -jar selenium -role node \
   -nodeConfig ./libs/selenium/nodeConfig.json \
-  -port 5554 &
+  -port 4443 &
 
 git clone git@github.com:cardforcoin/shale.git shale-clojure
 cd shale-clojure
